@@ -5,20 +5,20 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # Relationships
- 
+  has_many :registires, :through => :user_registries
 
   # Scopes
-  scope :alphabetical,  -> { order(:last_name).order(:first_name) }
-  scope :active,        -> { where(is_active: true) }
-  scope :inactive,      -> { where(is_active: false) }
-  scope :employees,     -> { where.not(role: 'customer') }
-  scope :customers,     -> { where(role: 'customer') }
+  scope :alphabetical,    -> { order(:last_name).order(:first_name) }
+  scope :active,          -> { where(is_active: true) }
+  scope :inactive,        -> { where(is_active: false) }
+  scope :employees,       -> { where.not(role: 'customer') }
+  scope :customers,       -> { where(role: 'customer') }
 
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false}
   validates :email, presence: true, uniqueness: { case_sensitive: false}, format: { with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, message: "is not a valid format" }
   validates :phone, format: { with: /\A\(?\d{3}\)?[-. ]?\d{3}[-.]?\d{4}\z/, message: "should be 10 digits (area code needed) and delimited with dashes only", allow_blank: true }
-  validates :role, inclusion: { in: %w[admin manager shipper customer], message: "is not a recognized role in system" }
+  validates :role, inclusion: { in: %w[admin manager registry_owner viewer], message: "is not a recognized role in system" }
   validates_presence_of :password, on: :create 
   validates_presence_of :password_confirmation, on: :create 
   validates_confirmation_of :password, on: :create, message: "does not match"
