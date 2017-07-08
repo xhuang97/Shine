@@ -1,5 +1,4 @@
 class Visit < ActiveRecord::Base
-
-#Killian lets move to this instead https://github.com/ankane/ahoy
-
+  has_many :ahoy_events, class_name: "Ahoy::Event"
+  belongs_to :user
 end
