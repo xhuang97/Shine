@@ -18,9 +18,6 @@ class UsersController < ApplicationController
     # get the price history for this item
     @user = User.find(params[:id])
     authorize! :show, @user
-    
-    #Id desc needed because of granularity with date.
-    @orders = @user.orders.idealsort.paginate(:page => params[:page]).per_page(10)
   end
 
 
@@ -57,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:password, :username, :phone, :password_confirmation, :photo, :first_name, :last_name, :email, :role, :active)
+    params.require(:user).permit(:password, :username, :phone, :password_confirmation, :avatar, :first_name, :last_name, :email, :role, :active)
   end
 
 end

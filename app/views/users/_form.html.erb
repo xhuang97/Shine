@@ -1,0 +1,64 @@
+<%= form_for @user, :html => { :multipart => true }  do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <p><%= pluralize(@user.errors.messages.map{|key, val| key.to_s + ' ' + val[0]}.count, 
+              "error") %> prohibited this user from being saved:<p>
+
+            <ul>
+            <% @user.errors.messages.map{|key, val| key.to_s + ' ' + val[0]}.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+ 
+        <p>
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name %>
+        </p>
+
+  
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name %>
+        </p>
+
+
+        <p>
+          <%= f.label :email, "Email Address" %><br />
+          <%= f.text_field :email %>
+        </p>
+ 
+        <p>
+          <%= f.label 'Enter new password if desired' %><br />
+          <%= f.password_field :password %>
+        </p>
+ 
+        <p>
+          <%= f.label :password_confirmation, "Confirm New Password" %><br />
+          <%= f.password_field :password_confirmation %>
+        </p>
+
+        <p>  
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar %>
+        </p>
+   
+         <p>  
+          <%= f.label :phone %><br />
+          <%= f.text_field :phone %>
+          </p>
+
+
+          <% if admin? || manager? %>
+            <p>
+             <%= f.select :role, User::ROLES, :prompt => "User Role" %>
+            </p>
+          <% end %>
+    
+         <p><%= f.submit (@user.new_record? ? "Sign up" : "Update"), :class => "button" %>
+            <%= link_to 'Cancel', user_path(@user), :class => 'button alert radius' %>
+         </p>
+  
+  
+      <% end %>
+

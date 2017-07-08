@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
 
 
-
+  resources :users
   
   
   get '*a', to: 'errors#routing'

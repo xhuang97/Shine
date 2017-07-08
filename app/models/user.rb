@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+
   # use has_secure_password
   has_secure_password
 
@@ -7,8 +9,8 @@ class User < ActiveRecord::Base
 
   # Scopes
   scope :alphabetical,  -> { order(:last_name).order(:first_name) }
-  scope :active,        -> { where(active: true) }
-  scope :inactive,      -> { where(active: false) }
+  scope :active,        -> { where(is_active: true) }
+  scope :inactive,      -> { where(is_active: false) }
   scope :employees,     -> { where.not(role: 'customer') }
   scope :customers,     -> { where(role: 'customer') }
 
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
   # For use in authorizing with CanCan
-  ROLES = [['Administrator', :admin],['Manager', :manager],['Shipper', :shipper],['Customer',:customer]]
+  ROLES = [['Administrator', :admin],['Manager', :manager],['Registry_Owner', :registry_owner],['Viewer',:viewer]]
 
   def role?(authorized_role)
     return false if role.nil?

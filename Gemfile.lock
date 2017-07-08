@@ -202,7 +202,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   cancancan (= 1.15.0)
-  carrierwave (= 1.0.0)
+  carrierwave (~> 1.0)
   chartkick
   coffee-rails (~> 4.1.0)
   foundation-rails (~> 6.3)
