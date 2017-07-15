@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   # Callbacks
   before_destroy :is_never_destroyable
   before_save :reformat_phone
+  before_update :check_active
   
   private
   def reformat_phone
@@ -59,8 +60,22 @@ class User < ActiveRecord::Base
     self.phone = phone       # reset self.phone to new string
   end
 
+  def check_active
+    if self.active = false
+      unless self.organization.nil?
+        self.organization.make_inactive
+      end
 
+      registries = self.registries
 
+      unless registries.nil?
+        registries.each do |reg|
+          reg.make_inactive
+        end
+      end
+
+    end
+  end
 
 
 end

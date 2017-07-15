@@ -7,8 +7,8 @@ class Registry < ActiveRecord::Base
 
 # Scopes
   scope :alphabetical,  -> { order(:title) }
-  scope :active,        -> { where(active: true) }
-  scope :inactive,      -> { where(active: false) }
+  scope :active,        -> { where(is_active: true) }
+  scope :inactive,      -> { where(is_active: false) }
 
 
 # Validations
@@ -17,4 +17,7 @@ class Registry < ActiveRecord::Base
 # Callbacks
 
 # Other methods
+ def make_inactive
+    self.update_attribute(:is_active, false)
+ end
 end

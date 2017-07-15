@@ -9,8 +9,11 @@ belongs_to :user
 
 # Scopes
   scope :alphabetical,  -> { order(:name) }
-  scope :active,        -> { where(active: true) }
-  scope :inactive,      -> { where(active: false) }
+  scope :for_profit,        -> { where(for_profit: true) }
+  scope :not_for_profit,      -> { where(for_profit: false) }
+
+  scope :active,        -> { where(is_active: true) }
+  scope :inactive,      -> { where(is_active: false) }
 
 
 # Validations
@@ -27,6 +30,10 @@ attr_accessor owner_username
 # Callbacks
 
 # Other methods
+ def make_inactive
+    self.update_attribute(:is_active, false)
+ end
+ 
 private
 	def active_user_check
 		#Custom validation for active item and non nil item

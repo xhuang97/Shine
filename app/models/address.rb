@@ -8,9 +8,6 @@ class Address < ActiveRecord::Base
   belongs_to :organization
 
 # Scopes
-  scope :active,        -> { where(active: true) }
-  scope :inactive,      -> { where(active: false) }
-
 
 # Validations
   validates_presence_of :name, :street_1, :zip, :city
