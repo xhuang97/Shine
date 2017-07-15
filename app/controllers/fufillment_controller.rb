@@ -1,0 +1,2 @@
+class FufillmentController < ApplicationController
+end
