@@ -1,0 +1,8 @@
+<% if admin? &&  %>
+	<%= render :partial => 'admin_home' %>
+<% elsif manager? %>
+	<%= render :partial => 'manager_home' %>
+<% else %>
+	<%= render :partial => 'general_home' %>
+<% end %>
+

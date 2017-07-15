@@ -1,0 +1,26 @@
+<% if @organizations.empty? %>
+  <h4>No organizations at this time.</h4>
+<% else %>
+  <h4>Organizations</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Name</th>
+        <th width="150">Industry</th>
+        <th width="150">Type</th>
+        <th width="150">Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @organizations.each do |org| %>
+        <tr>
+          <td><%= link_to org.name, organization_path(org) %></td>
+          <td><%= org.industry %></td>
+          <td><%= org.type %></td>
+          <td><%= link_to org.owner.proper_name, user_path(org.owner) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>

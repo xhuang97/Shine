@@ -1,0 +1,12 @@
+<div>
+	<h3> Shine Registry NewsLetter </h3>
+  <%= simple_form_for :email, url: newsletter_create_path do |f| %>
+
+  <%= f.input :subject, placeholder: 'Enter Subject' %>
+
+  <%= f.input :body, as: :text, :input_html => { class: 'email_body', :cols => 80, :rows => 10 } %>
+
+  <%= f.button :submit, "Send Email" %>
+<% end %>
+
+</div>

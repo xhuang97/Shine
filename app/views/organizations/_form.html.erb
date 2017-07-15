@@ -1,0 +1,22 @@
+<%= simple_form_for @organization do |f| %>
+
+  <%= f.input :name, placeholder: 'Enter Name' %>
+  <%= f.input :industry, :collection => Organization.INDUSTRY_LIST %>
+  <%= f.input :for_profit, wrapper: :vertical_boolean %>
+
+
+  <%= f.simple_fields_for @address do |a| %>
+    <p>Address:</p> 
+    <%= a.input :street_1, placeholder: 'Street Address' %>
+    <%= a.input :street_2, placeholder: 'Street Address Line 2' %>
+    <%= a.input :city, placeholder: 'City' %>
+    <%= a.input :state, :collection => Address.STATES_LIST %>
+    <%= a.input :zipcode, placeholder: 'Zipcode' %>
+  <% end %>
+ 
+ <% if admin? || manager? %>
+    <b> Owner Username</b>: <%= f.input :owner_username %>
+<% end %>
+
+  <%= f.button :submit %>
+<% end %>
