@@ -3,7 +3,6 @@ class Registry < ActiveRecord::Base
 # Relationships
   belongs_to :organization
   has_many :registry_items
-  has_one :user, :through => :user_registries
 
 # Scopes
   scope :alphabetical,  -> { order(:title) }

@@ -1,9 +1,10 @@
 class CreateOrganizations < ActiveRecord::Migration
   def change
     create_table :organizations do |t|
- 	  t.string :name, null: false
- 	  t.boolean :for_profit, null: false
- 	  t.boolean :is_active, null: false
+ 	  t.integer :user_id
+ 	  t.string :name
+ 	  t.boolean :for_profit
+ 	  t.boolean :is_active
  	  t.string :industry
       t.timestamps null: false
     end

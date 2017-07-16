@@ -34,15 +34,10 @@ class ApplicationController < ActionController::Base
   end
    helper_method :admin?
 
-  def viewer?
-    logged_in? && @current_user.role == 'viewer'
+  def customer?
+    logged_in? && @current_user.role == 'customer'
   end
-    helper_method :viewer?
-
-  def registry_owner?
-    logged_in? && @current_user.role == 'registry_owner'
-  end
-    helper_method :registry_owner?
+    helper_method :customer?
 
   def manager?
     logged_in? && @current_user.role == 'manager'

@@ -10,8 +10,8 @@ class Address < ActiveRecord::Base
 # Scopes
 
 # Validations
-  validates_presence_of :name, :street_1, :zip, :city
-  validates_format_of :zip, with: /\A\d{5}\z/, message: "should be five digits long"
+  validates_presence_of :street_1, :zipcode, :city
+  validates_format_of :zipcode, with: /\A\d{5}\z/, message: "should be five digits long"
   validates_inclusion_of :state, in: STATES_LIST.map{|key, value| value}, message: "is not an option"
   validate :address_is_not_a_duplicate, on: :create
 
@@ -19,12 +19,12 @@ class Address < ActiveRecord::Base
 
 # Other methods
 	def already_exists?
-	    School.where(street_1: self.street_1, street_2: self.street_2, zip: self.zip).size == 1
+	    Address.where(street_1: self.street_1, street_2: self.street_2, zipcode: self.zipcode).size == 1
 	end
 
 	private 
-	  def school_is_not_a_duplicate
-	    return true if self.name.nil? || self.street_1.nil? || self.zip.nil?
+	  def address_is_not_a_duplicate
+	    return true if self.street_1.nil? || self.zipcode.nil?
 	    if self.already_exists?
 	      errors.add(:name, "This address is already listed for another organization")
 	    end

@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714224331) do
+ActiveRecord::Schema.define(version: 20170708211335) do
 
   create_table "addresses", force: :cascade do |t|
+    t.integer  "organization_id"
     t.string   "street_2"
-    t.string   "street_1",   null: false
-    t.string   "city",       null: false
-    t.string   "state",      null: false
-    t.string   "zipcode",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "street_1",        null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.string   "zipcode",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "addresses", ["organization_id"], name: "index_addresses_on_organization_id"
 
   create_table "ahoy_events", force: :cascade do |t|
     t.integer  "visit_id"
@@ -34,11 +37,6 @@ ActiveRecord::Schema.define(version: 20170714224331) do
   add_index "ahoy_events", ["name", "time"], name: "index_ahoy_events_on_name_and_time"
   add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name"
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name"
-
-  create_table "assignments_user_regestries", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "registry_id"
-  end
 
   create_table "fufillment_items", force: :cascade do |t|
     t.boolean  "userBoolean"
@@ -68,21 +66,25 @@ ActiveRecord::Schema.define(version: 20170714224331) do
   end
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.boolean  "for_profit", null: false
-    t.boolean  "is_active",  null: false
+    t.integer  "user_id"
+    t.string   "name"
+    t.boolean  "for_profit"
+    t.boolean  "is_active"
     t.string   "industry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "registries", force: :cascade do |t|
-    t.string   "title",       null: false
+    t.integer  "organization_id"
+    t.string   "title",           null: false
     t.text     "description"
-    t.boolean  "is_active",   null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_active",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "registries", ["organization_id"], name: "index_registries_on_organization_id"
 
   create_table "registry_item_fields", force: :cascade do |t|
     t.string   "prompt",     null: false
