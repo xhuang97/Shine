@@ -4,13 +4,13 @@ class NewsletterController < ApplicationController
 	end
 
 	def create
-			subject = ""
+			subject = params['email']['subject']
 			filepath = ""
 			filename = ""
-			email_body = ""
+			email_body = params['email']['body']
 			
 		if subject != "" && email_body != ""
-			send_newsletter(subject, email_body, filepath, filename)
+			NewsletterMailer.send_newsletter(subject, email_body, filepath, filename)
 			redirect_to newsletter_path, notice: "NewsLetter Sent!"
 		
 		else
