@@ -45,6 +45,8 @@ gem 'foundation-rails', '~> 6.3'
 gem 'carrierwave', '~> 1.0'
 gem "chartkick"
 gem 'ahoy_matey'
+gem 'groupdate'
+gem 'active_median'
 
 
 

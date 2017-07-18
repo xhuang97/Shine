@@ -11,4 +11,8 @@ class HomeController < ApplicationController
 
   def privacy
   end
+
+  def analytics
+  	@visitCounts = Visit.group_by_day(:started_at).count
+  end
 end

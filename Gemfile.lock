@@ -20,6 +20,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_median (0.1.4)
+      activerecord
     activejob (4.2.7.1)
       activesupport (= 4.2.7.1)
       globalid (>= 0.3.0)
@@ -124,6 +126,8 @@ GEM
     gherkin (4.1.3)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     hirb (0.7.3)
     htmlentities (4.3.4)
     i18n (0.8.4)
@@ -272,6 +276,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_median
   ahoy_matey
   bcrypt (~> 3.1.7)
   byebug
@@ -285,6 +290,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   foundation-rails (~> 6.3)
+  groupdate
   jbuilder (~> 2.0)
   jquery-rails
   launchy
@@ -312,4 +318,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.15.1
+   1.15.2
