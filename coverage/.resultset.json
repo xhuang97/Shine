@@ -9,7 +9,7 @@
         1,
         null
       ],
-      "/home/vagrant/VM/Website/ShineRegistry/app/helpers/fufillment_helper.rb": [
+      "/home/vagrant/VM/Website/ShineRegistry/app/helpers/fulfillment_helper.rb": [
         1,
         null
       ],
@@ -383,7 +383,7 @@
         0,
         0
       ],
-      "/home/vagrant/VM/Website/ShineRegistry/app/controllers/fufillment_controller.rb": [
+      "/home/vagrant/VM/Website/ShineRegistry/app/controllers/fulfillment_controller.rb": [
         0,
         0
       ],
@@ -603,7 +603,7 @@
         0,
         0
       ],
-      "/home/vagrant/VM/Website/ShineRegistry/app/models/fufillment_item.rb": [
+      "/home/vagrant/VM/Website/ShineRegistry/app/models/fulfillment_item.rb": [
         0,
         0
       ],
