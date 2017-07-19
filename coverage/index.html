@@ -14,14 +14,14 @@
       <img src="./assets/0.10.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-07-18T04:13:36+00:00">2017-07-18T04:13:36+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-07-19T17:02:28+00:00">2017-07-19T17:02:28+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">25.69%</span></span>
+    (<span class="covered_percent"><span class="red">25.76%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>34</b> files in total.
-    <b>397</b> relevant lines. 
+    <b>396</b> relevant lines. 
     <span class="green"><b>102</b> lines covered</span> and
-    <span class="red"><b>295</b> lines missed </span>
+    <span class="red"><b>294</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -233,10 +233,10 @@
       <tr>
         <td class="strong"><a href="#71dbeb9bc00caf7bfef6e85cc7ab7a5c6cd50022" class="src_link" title="app/mailers/application_mailer.rb">app/mailers/application_mailer.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>4</td>
-        <td>4</td>
+        <td>3</td>
+        <td>3</td>
         <td>0</td>
-        <td>4</td>
+        <td>3</td>
         <td>0.0</td>
       </tr>
       
@@ -704,9 +704,9 @@
   <a name="Mailers"></a>
   <div>
     <b>2</b> files in total.
-    <b>15</b> relevant lines. 
+    <b>14</b> relevant lines. 
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>15</b> lines missed </span>
+    <span class="red"><b>14</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -725,10 +725,10 @@
       <tr>
         <td class="strong"><a href="#71dbeb9bc00caf7bfef6e85cc7ab7a5c6cd50022" class="src_link" title="app/mailers/application_mailer.rb">app/mailers/application_mailer.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>4</td>
-        <td>4</td>
+        <td>3</td>
+        <td>3</td>
         <td>0</td>
-        <td>4</td>
+        <td>3</td>
         <td>0.0</td>
       </tr>
       
@@ -1680,7 +1680,7 @@
         <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">			subject = &quot;&quot;</code>
+          <code class="ruby">			subject = params[&#39;email&#39;][&#39;subject&#39;]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="8">
@@ -1698,7 +1698,7 @@
         <li class="missed" data-hits="0" data-linenumber="10">
           
           
-          <code class="ruby">			email_body = &quot;&quot;</code>
+          <code class="ruby">			email_body = params[&#39;email&#39;][&#39;body&#39;]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="11">
@@ -1716,7 +1716,7 @@
         <li class="missed" data-hits="0" data-linenumber="13">
           
           
-          <code class="ruby">			send_newsletter(subject, email_body, filepath, filename)</code>
+          <code class="ruby">			NewsletterMailer.send_newsletter(subject, email_body, filepath, filename)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="14">
@@ -2708,9 +2708,9 @@
     <h3>app/mailers/application_mailer.rb</h3>
     <h4><span class="red">0.0 %</span> covered</h4>
     <div>
-      <b>4</b> relevant lines. 
+      <b>3</b> relevant lines. 
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -2726,16 +2726,10 @@
         <li class="missed" data-hits="0" data-linenumber="2">
           
           
-          <code class="ruby">  default from: &quot;from@example.com&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="3">
-          
-          
           <code class="ruby">  layout &#39;mailer&#39;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="4">
+        <li class="missed" data-hits="0" data-linenumber="3">
           
           
           <code class="ruby">end</code>
@@ -2805,7 +2799,7 @@
         <li class="missed" data-hits="0" data-linenumber="8">
           
           
-          <code class="ruby">		mail(subject: subject, body: email_body, content_type: &quot;text/html&quot;)</code>
+          <code class="ruby">		mail(subject: subject, body: email_body, content_type: &quot;text/html&quot;).deliver_now</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="9">

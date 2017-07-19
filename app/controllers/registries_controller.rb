@@ -5,6 +5,7 @@ class RegistriesController < ApplicationController
   end
 
   def new
+    #Check for approval of Organization
     @registry = Registry.new
   end
 
@@ -15,23 +16,19 @@ class RegistriesController < ApplicationController
 
 
   def show
-    # get the price history for this item --what does this mean???
+    #Grab Registry Items
+
     @registry = Registry.find(params[:id])
     authorize! :show, @registry
   end
 
   def create
+    #Grab OrganizationID through User
+    #Nested items
+
     @registry = Registry.new(registry_params)
     if @registry.save
-      
-        @test = session[:registry_id]
-        if(@test.nil?)
-           session[:registry_id] = @registry.id
-           redirect_to new_registry_path, notice: "Thank you for signing up! Make sure to add your registry!"
-        else
-          redirect_to registries_path, notice: "Registry Created"
-        end
-    
+        redirect_to new_registry_path, notice: "Thank you for adding your registry!"
     else
       flash[:error] = "This registry could not be created."
       render "new"
@@ -39,8 +36,8 @@ class RegistriesController < ApplicationController
   end
 
   def update
-     @registry = Registry.find(params[:id])
-    #authorize! :update, @registry
+    @registry = Registry.find(params[:id])
+    authorize! :update, @registry
     if @registry.update_attributes(registry_params)
       redirect_to(registry_path(@registry), :notice => 'Registry was successfully updated.')
     else
@@ -49,7 +46,7 @@ class RegistriesController < ApplicationController
   end
 
   def registry_params
-    params.require(:registry).permit(:title, :description, :is_active, :organizationID)
+    params.require(:registry).permit(:title, :description)
   end
 
 end

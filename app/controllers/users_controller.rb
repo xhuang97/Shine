@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
 
   def show
-    # get the price history for this item
+  
     @user = User.find(params[:id])
     authorize! :show, @user
   end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def update
      @user = User.find(params[:id])
-    #authorize! :update, @user
+    authorize! :update, @user
     if @user.update_attributes(user_params)
       redirect_to(user_path(@user), :notice => 'User was successfully updated.')
     else
