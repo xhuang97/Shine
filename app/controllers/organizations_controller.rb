@@ -1,4 +1,4 @@
-fclass OrganizationsController < ApplicationController
+class OrganizationsController < ApplicationController
   def index
     @organizations = Organization.alphabetical.active.paginate(:page => params[:page]).per_page(10)
     authorize! :index, @organization
