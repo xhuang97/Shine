@@ -1,5 +1,7 @@
 class FulfillmentItem < ActiveRecord::Base
 
+ include ShineHelpers::Validations
+
   # Relationships
   belongs_to :user
   belongs_to :registry_item_field

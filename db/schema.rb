@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170708211335) do
   end
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "order_id"
     t.integer  "quantity",   null: false
     t.string   "item_name",  null: false
     t.datetime "created_at", null: false
@@ -59,8 +60,9 @@ ActiveRecord::Schema.define(version: 20170708211335) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.float    "grand_total"
-    t.date     "date_ordered", null: false
+    t.integer  "user_id"
+    t.float    "grand_total",  null: false
+    t.date     "date_ordered"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

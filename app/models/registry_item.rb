@@ -1,5 +1,7 @@
 class RegistryItem < ActiveRecord::Base
 
+  include ShineHelpers::Validations
+
   CONTENT_TYPE_LIST = [['checkbox', :checkbox],['text', :text],['donation', :donation]]
 
   # Relationships

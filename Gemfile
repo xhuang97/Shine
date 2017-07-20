@@ -87,9 +87,3 @@ group :test do
   gem 'simplecov-console'
   gem 'single_test'
 end
-
-
-
-
-
-

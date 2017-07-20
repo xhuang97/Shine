@@ -5,6 +5,8 @@ class UserTest < ActiveSupport::TestCase
 
 	# test relationships
   	should have_many(:registries).through(:organization)
+    should have_many(:orders)
+    should have_many(:order_items).through(:order)
 
   	# test validations with matchers
   	should validate_presence_of(:email)
@@ -29,7 +31,7 @@ class UserTest < ActiveSupport::TestCase
     should allow_value("999.999-9999").for(:phone)
     should allow_value("9999999999").for(:phone)
     should allow_value("(999)999-9999").for(:phone)
-  
+
 
   	should_not allow_value("abc").for(:password)
   	should_not allow_value("test.com").for(:email)
@@ -42,10 +44,10 @@ class UserTest < ActiveSupport::TestCase
 
 
 context "Within context" do
-  setup do 	
+  setup do
   	create_users
   end
-    
+
   teardown do
       destroy_users
   end
@@ -99,7 +101,7 @@ context "Within context" do
    		assert User.exists?(@alex.id)
    end
 
-   should "require users to have unique usernames and emails and is case insensitive" do 
+   should "require users to have unique usernames and emails and is case insensitive" do
       temp = FactoryGirl.build(:user)
       deny temp.valid?
       temp.username = "uniqued"
@@ -135,9 +137,3 @@ context "Within context" do
 
 end
 end
-
-
-
-
-
-

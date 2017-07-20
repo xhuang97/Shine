@@ -7,6 +7,8 @@ class OrderItemTest < ActiveSupport::TestCase
   # should belong_to(:item)
 
   # test simple validations with matchers
+  should validate_presence_of(:quantity)
+  should validate_presence_of(:item_name)
   should validate_numericality_of(:quantity).only_integer.is_greater_than(0)
   # should allow_value(Date.current).for(:shipped_on)
   # should allow_value(1.day.ago.to_date).for(:shipped_on)
@@ -78,12 +80,12 @@ class OrderItemTest < ActiveSupport::TestCase
     # end
 
     should "have a working scope called byitem" do
-      assert_equal [5,10,10,10,5,5,5,5,10,1,1], OrderItem.byitem.map(&quantity)
+      assert_equal [5,10,10,10,5,5,5,5,10,1,1], OrderItem.byitem.map(&:quantity)
     end
 
     should "have a working scope called byquantity" do
-      assert_equal [1,1,5,5,5,5,5,10,10,10,10], OrderItem.byitem.map(&quantity)
+      assert_equal [1,1,5,5,5,5,5,10,10,10,10], OrderItem.byquantity.map(&:quantity)
     end
 
-
+  end
 end
