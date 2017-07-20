@@ -1,5 +1,7 @@
 class Registry < ActiveRecord::Base
 
+  include ShineHelpers::Validations
+
 # Relationships
   belongs_to :organization
   has_many :registry_items

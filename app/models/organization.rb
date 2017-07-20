@@ -1,9 +1,11 @@
 class Organization < ActiveRecord::Base
 
+  include ShineHelpers::Validations
+
 #Constants
 INDUSTRY_LIST = ['Construction', 'Capital Goods', 'Consumer Durables', 'Consumer Services', 'Energy', 'Finance', 'Health', 'Utilities', 'Technology', 'Transportation', 'Communication', 'Other'].freeze
 
-# Relationships	
+# Relationships
 has_one :address
 has_many :registries
 belongs_to :user
@@ -34,12 +36,12 @@ attr_accessor :owner_username
  def make_inactive
     self.update_attribute(:is_active, false)
  end
- 
+
 private
 	def active_user_check
 		#Custom validation for active item and non nil item
 		checkid = self.user_id
-		unless (User.where(id: checkid).present?) 
+		unless (User.where(id: checkid).present?)
 			errors.add(:is_active, 'User is not present')
 			return false
 		end
@@ -51,5 +53,3 @@ private
 		return true
 	end
 end
-
-

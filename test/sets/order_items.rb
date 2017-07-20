@@ -1,6 +1,6 @@
 module Contexts
   module OrderItems
-    # Context for order_items (assumes item, order contexts plus contexts associated with order)
+
     def create_order_items
       @alex_o1_1 = FactoryGirl.create(:order_item, order: @alex_o1, item_name: "woman e14p hat", quantity: 5)
       @alex_o1_2 = FactoryGirl.create(:order_item, order: @alex_o1, item_name: "woman e14p hat", quantity: 5)
