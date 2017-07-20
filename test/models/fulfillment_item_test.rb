@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FufillmentControllerTest < ActionController::TestCase
+class FulfillmentItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

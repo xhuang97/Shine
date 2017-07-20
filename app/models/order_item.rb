@@ -1,5 +1,7 @@
 class OrderItem < ActiveRecord::Base
 
+  include ShineHelpers::Validations
+
   # Relationships
   belongs_to :order
 

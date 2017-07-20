@@ -35,4 +35,16 @@ FactoryGirl.define do
     is_active true
   end
 
+  factory :order do
+    date_ordered Date.current
+    association :user
+    grand_total 2.00
+  end
+
+  factory :order_item do
+    association :order
+    item_name "woman e14p keychain"
+    quantity 1
+  end
+
 end

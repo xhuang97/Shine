@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
 
+  include ShineHelpers::Validations
+
   # Relationships
   belongs_to :user
   has_many :order_items
@@ -9,12 +11,12 @@ class Order < ActiveRecord::Base
 
   # Scopes
   scope :chronological, -> { order(date_ordered: :desc) }
-  scope :bycost, -> {order(total_cost: :desc)}
+  scope :bycost, -> {order(grand_total: :desc)}
 
   # Validations
-  validates_presence_of :total_cost, :date_ordered
-  validates_date :date_ordered  # not essential, but permittable
-  validates_numericality_of :total_cost, greater_than_or_equal_to: 0, allow_blank: false
+  validates_presence_of :grand_total
+  # validates_date :date_ordered  # not essential, but permittable
+  validates_numericality_of :grand_total, greater_than_or_equal_to: 0, allow_blank: false
   validate :user_is_active_in_system
 
   # Other methods
