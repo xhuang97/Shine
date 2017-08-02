@@ -78,6 +78,6 @@ Rails.application.routes.draw do
  
   
   
-  get '*a', to: 'errors#routing'
+  #get '*a', to: 'error#routing'
   
 end

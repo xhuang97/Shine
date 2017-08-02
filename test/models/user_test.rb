@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
 	# test relationships
   	should have_many(:registries).through(:organization)
     should have_many(:orders)
-    should have_many(:order_items).through(:order)
+    should have_many(:order_items).through(:orders)
 
   	# test validations with matchers
   	should validate_presence_of(:email)

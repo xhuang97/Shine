@@ -1,10 +1,11 @@
 class Registry < ActiveRecord::Base
-
   include ShineHelpers::Validations
 
 # Relationships
   belongs_to :organization
   has_many :registry_items
+  accepts_nested_attributes_for :registry_items
+  attr_accessible :registry_items_attributes, allow_destroy: true
 
 # Scopes
   scope :alphabetical,  -> { order(:title) }

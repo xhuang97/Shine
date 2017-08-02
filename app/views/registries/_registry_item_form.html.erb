@@ -1,0 +1,11 @@
+<fieldset>
+	<%= f.label "Registry Item Type" %>
+	<%= f.select :content_type, RegistryItem.CONTENT_TYPE_LIST %> </br>
+	<%= f.check_box :_destroy %>
+	<%= f.label :_destroy, "Remove Registry Item" %> </br>
+
+
+	<%= f.fields_for :registry_item_fields do |builder| %>
+    	<%= render 'registry_item_fields_form', f: builder %>
+    <% end %>
+</fieldset>

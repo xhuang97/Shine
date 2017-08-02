@@ -6,7 +6,9 @@ class RegistryItem < ActiveRecord::Base
 
   # Relationships
   belongs_to :registry
-  has_many :registry_item_field
+  has_many :registry_item_fields
+  accepts_nested_attributes_for :registry_item_fields, allow_destroy: true
+  accepts_nested_attributes_for :registry_item_fields_attributes
 
   # Scopes
   scope :bycontenttype,  -> { order(:content_type) }

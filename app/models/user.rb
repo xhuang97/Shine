@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_one :organization
   has_many :registries, through: :organization
   has_many :orders
-  has_many :order_items, through: :order
+  has_many :order_items, through: :orders
 
   # Scopes
   scope :alphabetical,    -> { order(:last_name).order(:first_name) }

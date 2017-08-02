@@ -50,11 +50,11 @@ class OrderTest < ActiveSupport::TestCase
 
     should "verify that the user is active in the system" do
       # inactive user
-      @bad_order = FactoryGirl.build(:order, user: @melanie, school: @cent_cath, grand_total: 5.25, payment_receipt: "dcmjgwwtsd39x6wfc1", date: 5.days.ago.to_date)
+      @bad_order = FactoryGirl.build(:order, user: @melanie, grand_total: 5.25, date_ordered: 5.days.ago.to_date)
       deny @bad_order.valid?
       # non-existent user
       ghost = FactoryGirl.build(:user, first_name: "Ghost")
-      non_user_order = FactoryGirl.build(:order, user: ghost, school: @cent_cath)
+      non_user_order = FactoryGirl.build(:order, user: ghost)
       deny non_user_order.valid?
     end
 

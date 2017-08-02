@@ -1,1 +1,33 @@
-<p> To Do </p>
+<%= form_for @registry do |f| %>
+	 <% if @registry.errors.any? %>
+          <div id="error_explanation">
+            <p><%= pluralize(@registry.errors.messages.map{|key, val| key.to_s + ' ' + val[0]}.count, 
+              "error") %> prohibited this registry from being saved:<p>
+
+            <ul>
+            <% @registry.errors.messages.map{|key, val| key.to_s + ' ' + val[0]}.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+     <% end %>
+
+
+    <p>
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </p>
+
+
+    <%= f.fields_for :registry_items do |builder| %>
+    	<%= render 'registry_item_form', f: builder %>
+    <% end %>
+
+
+
+<% end %>
