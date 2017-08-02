@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802194131) do
+ActiveRecord::Schema.define(version: 20170802225848) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "organization_id"
@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(version: 20170802194131) do
   add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name"
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name"
 
-  create_table "fufillment_items", force: :cascade do |t|
-    t.boolean  "userBoolean"
-    t.text     "userText"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "fulfillment_items", force: :cascade do |t|
+    t.integer  "registry_item_field_id"
+    t.boolean  "user_boolean"
+    t.text     "user_text"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "news_letters", force: :cascade do |t|
@@ -72,9 +73,10 @@ ActiveRecord::Schema.define(version: 20170802194131) do
     t.string   "name"
     t.boolean  "for_profit"
     t.boolean  "is_active"
+    t.boolean  "verified",   default: false
     t.string   "industry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "registries", force: :cascade do |t|
@@ -89,12 +91,14 @@ ActiveRecord::Schema.define(version: 20170802194131) do
   add_index "registries", ["organization_id"], name: "index_registries_on_organization_id"
 
   create_table "registry_item_fields", force: :cascade do |t|
-    t.string   "prompt",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "registry_item_id"
+    t.string   "prompt",           null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "registry_items", force: :cascade do |t|
+    t.integer  "registry_id"
     t.integer  "y",            null: false
     t.integer  "x",            null: false
     t.string   "content_type", null: false

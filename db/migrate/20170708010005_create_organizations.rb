@@ -5,6 +5,7 @@ class CreateOrganizations < ActiveRecord::Migration
  	  t.string :name
  	  t.boolean :for_profit
  	  t.boolean :is_active
+ 	  t.boolean :verified, default: false
  	  t.string :industry
       t.timestamps null: false
     end
