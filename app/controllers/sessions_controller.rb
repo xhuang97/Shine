@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
          redirect_to user_path, notice: "User Created!"
        rescue Exception
           session[:user_id] = user.id
-          #create_cart
+         
           redirect_to home_path, notice: "Logged in!"
         end
       else
@@ -25,8 +25,6 @@ class SessionsController < ApplicationController
 
     def destroy
       session[:user_id] = nil
-      #clear_cart
-      #destroy_cart
       redirect_to home_path, notice: "Logged out!"
     end
 end

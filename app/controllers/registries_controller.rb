@@ -1,7 +1,7 @@
 class RegistriesController < ApplicationController
   def index
     @registries = Registry.alphabetical.active.paginate(:page => params[:page]).per_page(10)
-    authorize! :index, @registry
+  
   end
 
   def new
@@ -11,7 +11,7 @@ class RegistriesController < ApplicationController
 
   def edit
      @registry = Registry.find(params[:id])
-     authorize! :edit, @registry
+     
   end
 
 
@@ -19,14 +19,13 @@ class RegistriesController < ApplicationController
     #Grab Registry Items
 
     @registry = Registry.find(params[:id])
-    authorize! :show, @registry
+   
   end
 
   def create
-    #Grab OrganizationID through User
-    #Nested items
-
     @registry = Registry.new(registry_params)
+    @registry.organization_id = current_user.organization.id
+
     if @registry.save
         redirect_to new_registry_path, notice: "Thank you for adding your registry!"
     else
@@ -37,13 +36,13 @@ class RegistriesController < ApplicationController
 
   def update
     @registry = Registry.find(params[:id])
-    authorize! :update, @registry
     if @registry.update_attributes(registry_params)
       redirect_to(registry_path(@registry), :notice => 'Registry was successfully updated.')
     else
       render :action => "edit"
     end
   end
+
 
   def registry_params
     params.require(:registry).permit(:title, :description)

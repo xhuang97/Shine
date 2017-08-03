@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :organization do
-   name "Shine Registry"
+   name "Shine Symphony"
    for_profit false
    is_active true
    industry 'Technology'

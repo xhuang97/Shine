@@ -11,15 +11,23 @@
             </ul>
           </div>
         <% end %>
- 
-        <p>
-          <%= f.label :first_name %><br />
-          <%= f.text_field :first_name %>
-        </p>
+        
 
-  
-          <%= f.label :last_name %><br />
-          <%= f.text_field :last_name %>
+        <% if !current_user.nil? %>
+          <p>
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name %>
+          </p>
+
+    
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name %>
+          </p>
+        <% end %>
+
+         <p>
+          <%= f.label :username %><br />
+          <%= f.text_field :username %>
         </p>
 
 
@@ -29,12 +37,20 @@
         </p>
  
         <p>
-          <%= f.label 'Enter new password if desired' %><br />
+          <% if current_user.nil? %>
+             <%= f.label 'Enter password' %><br />
+          <% else %>
+             <%= f.label 'Enter new password if desired' %><br />
+          <% end %>
           <%= f.password_field :password %>
         </p>
  
         <p>
-          <%= f.label :password_confirmation, "Confirm New Password" %><br />
+          <% if current_user.nil? %>
+             <%= f.label :password_confirmation, "Confirm Password" %><br />
+          <% else %>
+             <%= f.label :password_confirmation, "Confirm New Password" %><br />
+          <% end %>
           <%= f.password_field :password_confirmation %>
         </p>
 
@@ -56,7 +72,7 @@
           <% end %>
     
          <p><%= f.submit (@user.new_record? ? "Sign up" : "Update"), :class => "button" %>
-            <%= link_to 'Cancel', user_path(@user), :class => 'button alert radius' %>
+            <%= link_to 'Cancel', login_path, :class => 'button alert radius' %>
          </p>
   
   

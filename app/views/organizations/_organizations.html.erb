@@ -7,7 +7,6 @@
       <tr>
         <th width="225">Name</th>
         <th width="150">Industry</th>
-        <th width="150">Type</th>
         <th width="150">Owner</th>
       </tr>
     </thead>
@@ -16,8 +15,7 @@
         <tr>
           <td><%= link_to org.name, organization_path(org) %></td>
           <td><%= org.industry %></td>
-          <td><%= org.type %></td>
-          <td><%= link_to org.owner.proper_name, user_path(org.owner) %></td>
+          <td><%= link_to org.user.proper_name, user_path(org.user) %></td>
         </tr>
       <% end %>
     </tbody>

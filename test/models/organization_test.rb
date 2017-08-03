@@ -23,7 +23,7 @@ context "Within context" do
   end
 
   should "Have alphabetical scope" do
-  		assert_equal ["Google", "Red Cross", "Shine Registry", "Startup"], Organization.alphabetical.map(&:name)
+  		assert_equal ["Google", "Red Cross", "Shine Symphony", "Startup"], Organization.alphabetical.map(&:name)
   end 
   	
   should "Have for_profit scope" do
@@ -31,11 +31,11 @@ context "Within context" do
   end
 
   should "Have not_for_profit scope" do
-  	assert_equal ["Shine Registry", "Red Cross", "Startup"], Organization.not_for_profit.map(&:name)
+  	assert_equal ["Shine Symphony", "Red Cross", "Startup"], Organization.not_for_profit.map(&:name)
   end
 
   should "Have active scope" do
-  	assert_equal ["Shine Registry", "Google", "Red Cross"], Organization.active.map(&:name)
+  	assert_equal ["Shine Symphony", "Google", "Red Cross"], Organization.active.map(&:name)
   end
 
   should "Have inactive scope" do

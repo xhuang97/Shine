@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.alphabetical.active.paginate(:page => params[:page]).per_page(10)
-    authorize! :index, @user
+    
   end
 
   def new
@@ -10,29 +10,27 @@ class UsersController < ApplicationController
 
   def edit
      @user = User.find(params[:id])
-     authorize! :edit, @user
+    
   end
 
 
   def show
-  
     @user = User.find(params[:id])
-    authorize! :show, @user
   end
 
 
 
   def create
     @user = User.new(user_params)
-    if(!current_user.nil? && current_user.role != 'admin')
+    unless(admin? || manager?)
       @user.role = 'customer'
     end
+
+
     if @user.save
-      
-        @test = session[:user_id]
-        if(@test.nil?)
+        unless(admin? || manager?)
            session[:user_id] = @user.id
-           redirect_to new_school_path, notice: "Thank you for signing up! Make sure to add your School!"
+           redirect_to home_path, notice: "Thank you for signing up!"
         else
           redirect_to users_path, notice: "User Created"
         end
@@ -45,7 +43,7 @@ class UsersController < ApplicationController
 
   def update
      @user = User.find(params[:id])
-    authorize! :update, @user
+   
     if @user.update_attributes(user_params)
       redirect_to(user_path(@user), :notice => 'User was successfully updated.')
     else
