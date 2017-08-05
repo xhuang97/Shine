@@ -1,11 +1,11 @@
 <fieldset>
 	<%= f.label "Registry Item Type" %>
-	<%= f.select :content_type, RegistryItem.CONTENT_TYPE_LIST %> </br>
+	<%= f.select :content_type, RegistryItem::CONTENT_TYPE_LIST %> </br>
 	<%= f.hidden_field :_destroy %>
-	<%= link_to "Remove Registry Item", "#", class: "removefields" %> </br>
+	<%= link_to "Remove Registry Item", '#', class: "remove_fields" %> </br>
 
 
-	<%= f.fields_for :registry_item_fields do |builder| %>
-    	<%= render 'registry_item_fields_form', f: builder %>
-    <% end %>
+	<%#= f.fields_for :registry_item_fields do |builder| %>
+    	<%#= f.text_field :prompt %>
+    <%# end %>
 </fieldset>

@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   root 'home#home'
   resources :users
   resources :organizations
+  resources :registries
 
 
  

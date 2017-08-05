@@ -31,7 +31,7 @@ class HomeController < ApplicationController
     @activeRegistries = Registry.group(:is_active).count 
     #I'm not sure if there is a different way to just get the number of active registries, not active and inactive
     @createdRegistries = Registry.group_by_day(:created_at).count
-    @updatedRegistries = Registry.group_by_day(:upated_at).count
+    #@updatedRegistries = Registry.group_by_day(:upated_at).count
 
     @activeUsers = User.group(:is_active).count #same note as above
     @createdUsers = User.group_by_day(:created_at).count
@@ -45,11 +45,11 @@ class HomeController < ApplicationController
     @forProfitOrganizations = Organization.group(:for_profit).count
     @organizationIndustries = Organization.group(:industry).count
 
-    @createdRegistryItems = Registry_Item.group_by_day(:created_at).count
-    @updatedRegistryItems = Registry_Item.group_by_day(:updated_at).count
-    @registryItemsContent = Registry_Item.group(:content_type).count
+    #@createdRegistryItems = Registry_Item.group_by_day(:created_at).count
+    #@updatedRegistryItems = Registry_Item.group_by_day(:updated_at).count
+    #@registryItemsContent = Registry_Item.group(:content_type).count
 
     #I want to count the number of news letter subscribers total; I don't know how to do that.
-    @createdNewsLetterSubscribers = News_Letter.group_by_day(:created_at).count
+    #@createdNewsLetterSubscribers = News_Letter.group_by_day(:created_at).count
   end
 end

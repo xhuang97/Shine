@@ -7,6 +7,8 @@ class RegistriesController < ApplicationController
   def new
     #Check for approval of Organization
     @registry = Registry.new
+    @registry.registry_items.build
+    @registry.registry_item_fields.build
   end
 
   def edit
@@ -17,9 +19,10 @@ class RegistriesController < ApplicationController
 
   def show
     #Grab Registry Items
-
     @registry = Registry.find(params[:id])
-   
+    @registryItems = @registry.registry_items.grid
+
+
   end
 
   def create

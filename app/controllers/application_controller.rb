@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     render template: 'errors/not_found'
   end
 
+  
+
 
 
   private

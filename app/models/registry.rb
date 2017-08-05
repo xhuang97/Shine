@@ -4,7 +4,9 @@ class Registry < ActiveRecord::Base
 # Relationships
   belongs_to :organization
   has_many :registry_items
+  has_many :registry_item_fields, through: :registry_items
   accepts_nested_attributes_for :registry_items, allow_destroy: true
+  accepts_nested_attributes_for :registry_item_fields, allow_destroy: true
   
 
 # Scopes
