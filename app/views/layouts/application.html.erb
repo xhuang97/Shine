@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag    "application" %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
@@ -17,17 +17,29 @@
     <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
 
   <%= csrf_meta_tags %>
-
-
-
-
+  
     <script>   ahoy.trackView(); </script>
   </head>
-  
-  <body>
-    <%= render :partial => "partials/flash" %>
-    <%= yield %>
 
+  <body>
+    <div id="title_area">
+      <%= link_to image_tag('chess_store_title.png'), home_path %>
+    </div>
+    <%= render :partial => "partials/nav" %>
+
+    <div class="row">
+      <div class="small-12 columns" id="main_content">
+        <%= render :partial => "partials/flash" %>
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer>
+      <div class="small-12 columns" id="footer">
+        <%= render partial: 'partials/footer' %>
+      </div>
+    </footer>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
 <div class="row">

@@ -1,0 +1,42 @@
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section">
+      <ul class="left">
+        <!-- link to home -->
+        <li><%= link_to "Home", home_path %></li>
+
+        <!-- options for items -->
+        <li class="has-dropdown">
+          <%= link_to "Registries", registries_path %>
+        </li>
+
+
+        <!-- options for users -->
+        <li>
+          <%= link_to "Users", users_path %>
+        </li>
+
+
+
+      </ul>
+		<!-- options for logins -->
+      <ul class="right">
+    <li><% if logged_in? %>
+      <%= link_to 'Cart', current_cart_path %>
+      <% end %>
+    </li>
+		<li><% if logged_in? %>
+			  <%= link_to 'Logout', logout_path %>
+			<% else %>
+			  <%= link_to 'Login', login_path %>
+			<% end %>
+		</li>
+		<li><% if not logged_in? %>
+				<%= link_to 'Sign up', signup_path %>
+			<% end %>
+		</li>
+      </li>
+
+    </section>
+  </nav>
+</div>
