@@ -1,7 +1,7 @@
 class RegistriesController < ApplicationController
   def index
     @registries = Registry.alphabetical.active.paginate(:page => params[:page]).per_page(10)
-  
+    @featuredRegistries = Registry.first(5) #Placeholder for an actual list of featured registries
   end
 
   def new
