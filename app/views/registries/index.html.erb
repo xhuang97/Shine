@@ -1,1 +1,61 @@
-<p> To Do </p>
+<div id="content">
+
+<!-- Slideshow for featured registries based on https://www.w3schools.com/bootstrap/bootstrap_carousel.asp and https://stackoverflow.com/questions/38357072/bootstrap-carousel-in-rails -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+	<ol class="carousel-indicators">
+		<% @featuredRegistries.each_with_index do |photo, n| %>
+			<li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+		<% end %>
+	</ol>
+
+<!-- wrapper for slides -->
+<div class="carousel-inner" role="listbox">
+	<div class="item active">
+		<!-- need to add "mage_tag @featuredRegistries.first.image" but registries don't have image -->
+		<div class ="carousel-caption">
+			<!-- .first is not working, maybe because list is currently empty? -->
+			<!-- <h3>  @featuredRegistries.first.title  </h3> -->  
+			<!-- <p>   @featuredRegistries.first.description </p> -->
+			<!-- link_to "View Registry", registry_path(@featuredRegistries.first) -->
+		</div>
+	</div>
+	<% @featuredRegistries.each do |registry| %>
+		<div class="item">
+			<!-- add image_tag registry.image -->
+			<div class ="carousel-caption">
+				<h3><%= registry.title %></h3>
+				<p><%= registry.description %></p>
+				<%= link_to "View Registry", registry_path(registry) %>
+			</div>
+		</div>
+  	<% end %>
+</div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<!--list of all registries, still need to filter by categories -->
+<h2>Browse the Registries</h2>
+
+<!-- need to add "paginate @registries" but rails server says it doesn't recognize method paginate, so may still need to install? -->
+	<% @registries.each do |registry| %> 
+		<div>
+		<!-- Each registry needs image, I couldn't find any image for the registry in the database schema --> 
+		<h2><%= registry.title %></h2> 
+		<p><%= registry.description %></p>
+		<%= link_to "View Registry", registry_path(registry) %>
+		</div>
+	<% end %>
+
+
+</div>
